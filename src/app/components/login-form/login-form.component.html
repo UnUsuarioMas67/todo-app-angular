@@ -2,17 +2,15 @@
   <div class="card-body p-5">
     <h3 class="card-title mb-4">Inicia Sesión</h3>
 
-    <form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && onSubmit()"
-      [class.was-validated]="loginForm.submitted">
+    <form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && onSubmit()">
       <div class="form-floating mb-4">
-        <input #emailInput type="email" name="login-email" id="login-email" class="form-control" placeholder=""
-          [(ngModel)]="emailValue" #email="ngModel" email required aria-describedby="invalid-email-msg">
-        <label for="login-email" class="form-label">Correo Electrónico</label>
+        <input #emailInput type="email" name="login-email" class="form-control" placeholder="" [(ngModel)]="emailValue"
+          #email="ngModel" email required aria-describedby="invalid-email-msg">
+        <label for="login-email" class="form-label">
+          Correo Electrónico
+        </label>
 
-        <div id="invalid-email-msg">
-          <small [hidden]="!email.valid || !loginForm.submitted" class="text-danger">Correo inválido</small>
-          <small [hidden]="!userNotExists" class="text-danger">Este usuario no existe</small>
-        </div>
+        <small [hidden]="!userNotExists" class="text-danger" id="invalid-email-msg">Este usuario no existe</small>
       </div>
 
       <button class="btn btn-lg btn-primary w-100" [disabled]="!loginForm.form.valid">Ingresar</button>

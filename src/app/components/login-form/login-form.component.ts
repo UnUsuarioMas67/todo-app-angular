@@ -1,5 +1,5 @@
 import { Component, inject, output } from '@angular/core';
-import { FormsModule, FormSubmittedEvent } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { User } from '../../model/todo-data.type';
 import { TodoDataService } from '../../services/todo-data.service';
 
