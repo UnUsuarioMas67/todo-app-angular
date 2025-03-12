@@ -41,4 +41,20 @@ export class TodoDataService {
   getTask(user: User, id: number) {
     return user.tasks.find((t) => t.id === id);
   }
+
+  addUser(email: string, name: string) {
+    const users = this.getAllUsers();
+    const lastId = users.reduce((previous, current) =>
+      current.id > previous.id ? current : previous
+    ).id;
+
+    users.push({
+      id: lastId + 1,
+      email,
+      name,
+      tasks: [],
+    });
+
+    this.setLocalStorageItem(users);
+  }
 }
