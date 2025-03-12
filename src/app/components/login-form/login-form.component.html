@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-body p-5">
+    <h3 class="card-title mb-4">Inicia Sesión</h3>
+    <form>
+      <div class="form-floating mb-4">
+        <input type="email" name="email" id="email" class="form-control" placeholder="" required>
+        <label for="email" class="form-label">Email</label>
+      </div>
+      <div class="form-floating mb-4">
+        <input type="password" name="password" id="password" class="form-control" placeholder="" required>
+        <label for="password" class="form-label">Contraseña</label>
+      </div>
+      <button class="btn btn-lg btn-primary w-100">Ingresar</button>
+    </form>
+  </div>
+  <div class="card-footer">
+    <p class="text-center my-3">
+      ¿No tienes una cuenta?
+      <a href="#" class="link-underline-primary" (click)="registerLinkClicked.emit()">Regístrate</a>
+    </p>
+  </div>
+</div>
