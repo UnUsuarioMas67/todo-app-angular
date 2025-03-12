@@ -1,0 +1,30 @@
+<section class="bg-primary bg-gradient p-5 vh-100">
+  <div class="container h-100">
+    <div class="row align-items-center h-100">
+      <div class="col-12 col-md-6 col-xl-8 text-light">
+        <div class="col-12 col-xl-10">
+          <p class="text-uppercase fw-bolder h2 mb-5">
+            <i class="bi bi-ui-checks-grid"></i>
+            TaskFlow
+          </p>
+          <p class="h1 mb-3">Administra Tus Tareas de Manera Rápida Y Eficiente.</p>
+          <p class="lead">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum unde expedita mollitia sapiente autem ipsum,
+            optio beatae repellat reiciendis placeat voluptatum quam ut sed molestias quasi nostrum. Laboriosam, debitis
+            reprehenderit.
+          </p>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-xl-4">
+        @if (!isRegistering()) {
+        <app-login-form (registerLinkClicked)="isRegistering.set(true)"
+          (formSubmitted)="OnLogin($event)"></app-login-form>
+        }
+        @else {
+        <app-register-form (loginLinkClicked)="isRegistering.set(false)"
+          (formSubmitted)="OnRegister()"></app-register-form>
+        }
+      </div>
+    </div>
+  </div>
+</section>
