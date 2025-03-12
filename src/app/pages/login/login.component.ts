@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
-import { LoginFormComponent } from '../login-form/login-form.component';
-import { RegisterFormComponent } from '../register-form/register-form.component';
+import { LoginFormComponent } from '../../components/login-form/login-form.component';
+import { RegisterFormComponent } from '../../components/register-form/register-form.component';
 import { Router } from '@angular/router';
 import { TodoDataService } from '../../services/todo-data.service';
 import { User } from '../../model/todo-data.type';
