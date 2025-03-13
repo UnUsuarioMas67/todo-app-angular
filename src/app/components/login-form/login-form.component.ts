@@ -12,7 +12,7 @@ import { TodoDataService } from '../../services/todo-data.service';
 export class LoginFormComponent {
   tds = inject(TodoDataService);
   registerLinkClicked = output();
-  formSubmitted = output<User>();
+  formSubmitted = output();
 
   userNotExists = false;
   emailValue = '';
@@ -30,7 +30,8 @@ export class LoginFormComponent {
       return;
     }
 
-    this.formSubmitted.emit(user);
+    this.tds.setCurrentUser(user);
+    this.formSubmitted.emit();
     this.userNotExists = false;
   }
 }

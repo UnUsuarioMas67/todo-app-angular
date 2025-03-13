@@ -13,10 +13,10 @@ import { User } from '../../model/todo-data.type';
 })
 export class LoginComponent {
   router = inject(Router);
-  todoDataService = inject(TodoDataService);
+  tds = inject(TodoDataService);
   isRegistering = signal(false);
 
-  OnLogin(user: User) {
+  OnLogin() {
     this.router.navigateByUrl('/todo');
   }
 
