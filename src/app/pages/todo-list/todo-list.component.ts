@@ -1,25 +1,31 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
-import { Task } from '../../model/todo-data.type';
+import { AddTaskData, Task } from '../../model/todo-data.type';
 import { TodoDataService } from '../../services/todo-data.service';
 import { TodoTaskComponent } from '../../components/todo-task/todo-task.component';
+import { NewTaskFormComponent } from '../../components/new-task-form/new-task-form.component';
 
 @Component({
   selector: 'app-todo-list',
-  imports: [HeaderComponent, TodoTaskComponent],
+  imports: [HeaderComponent, TodoTaskComponent, NewTaskFormComponent],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.scss',
 })
 export class TodoListComponent implements OnInit {
   tds = inject(TodoDataService);
+  user = this.tds.getCurrentUser();
+
   tasks = signal<Array<Task>>([]);
   userName = signal('');
 
   ngOnInit(): void {
-    const user = this.tds.getCurrentUser();
-    if (!user) return;
+    if (!this.user) return;
 
-    this.userName.set(user.name);
-    this.tasks.set(user.tasks);
+    this.userName.set(this.user.name);
+    this.tasks.set(this.user.tasks);
+  }
+
+  OnFormSubmit(data: AddTaskData) {
+    this.tds.addTask(data);
   }
 }
