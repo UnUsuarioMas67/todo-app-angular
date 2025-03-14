@@ -12,3 +12,10 @@ export type User = {
   password: string;
   tasks: Array<Task>;
 };
+
+export type AddTaskData = {
+  title: string;
+  description: string;
+  date: string;
+  time: string;
+};
