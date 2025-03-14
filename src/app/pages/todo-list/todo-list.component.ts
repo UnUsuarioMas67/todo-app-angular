@@ -27,10 +27,16 @@ export class TodoListComponent implements OnInit {
 
   onFormSubmit(data: AddTaskData) {
     this.tds.addTask(data);
+    this.tasks.set(this.user!.tasks);
   }
 
-  onTaskCheckClicked(task: Task) {
-    task.completed = !task.completed;
-    this.tds.updateTask(task);
+  onTaskCheckClick(task: Task) {
+    this.tds.updateTask({ ...task, completed: !task.completed });
+    this.tasks.set(this.user!.tasks);
+  }
+
+  onTaskDeleteClick(task: Task) {
+    this.tds.deleteTask(task.id);
+    this.tasks.set(this.user!.tasks);
   }
 }

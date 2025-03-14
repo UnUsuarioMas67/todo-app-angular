@@ -27,7 +27,8 @@
 
         <div>
           @for (task of tasks(); track task.id) {
-          <app-todo-task [task]="task" (checkClicked)="onTaskCheckClicked($event)"></app-todo-task>
+          <app-todo-task [task]="task" (checkClicked)="onTaskCheckClick($event)"
+            (deleteClicked)="onTaskDeleteClick($event)"></app-todo-task>
           }
         </div>
       </div>
