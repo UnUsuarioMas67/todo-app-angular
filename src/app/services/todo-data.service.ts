@@ -34,9 +34,9 @@ export class TodoDataService {
 
     const users: Array<User> = [
       {
-        id: 0,
         name: 'John Johnson',
         email: 'jj666@mail.net',
+        password: '1234',
         tasks,
       },
     ];
@@ -67,19 +67,18 @@ export class TodoDataService {
     return this.users.find((u) => u.email === email);
   }
 
-  addUser(email: string, name: string) {
-    const lastId = this.users.reduce((previous, current) =>
-      current.id > previous.id ? current : previous
-    ).id;
+  addUser(email: string, name: string, password: string) {
+    if (this.getUserByEmail(email)) return false;
 
     this.users.push({
-      id: lastId + 1,
       email,
       name,
+      password,
       tasks: [],
     });
 
     this.saveUserList();
+    return true;
   }
 
   setCurrentUser(user: User | number) {
@@ -88,14 +87,14 @@ export class TodoDataService {
       return;
     }
 
-    localStorage.setItem(this.currentUserKey, JSON.stringify(user.id));
+    localStorage.setItem(this.currentUserKey, JSON.stringify(user.email));
   }
 
   getCurrentUser() {
     const json = localStorage.getItem(this.currentUserKey);
     if (!json) return null;
 
-    const id: number = JSON.parse(json);
-    return this.users.find((u) => u.id === id) || null;
+    const userEmail: string = JSON.parse(json);
+    return this.users.find((u) => u.email === userEmail) || null;
   }
 }

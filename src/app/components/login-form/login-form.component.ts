@@ -14,24 +14,26 @@ export class LoginFormComponent {
   registerLinkClicked = output();
   formSubmitted = output();
 
+  loginObj = {
+    email: '',
+    password: '',
+  };
   userNotExists = false;
-  emailValue = '';
-
-  formFilled() {
-    return !!this.emailValue;
-  }
+  incorrectPassword = false;
 
   onSubmit() {
-    const user = this.tds.getUserByEmail(this.emailValue);
-    this.emailValue = '';
+    const user = this.tds.getUserByEmail(this.loginObj.email);
 
-    if (!user) {
-      this.userNotExists = true;
+    this.userNotExists = !user;
+    if (!user) return;
+
+    this.incorrectPassword = this.loginObj.password !== user.password;
+    if (this.incorrectPassword) {
+      this.loginObj.password = '';
       return;
     }
 
     this.tds.setCurrentUser(user);
     this.formSubmitted.emit();
-    this.userNotExists = false;
   }
 }

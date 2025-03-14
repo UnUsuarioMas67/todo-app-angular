@@ -16,17 +16,25 @@ export class RegisterFormComponent {
   signUpObj = {
     name: '',
     email: '',
+    password: '',
     acceptedTerms: false,
   };
 
   onSubmit() {
-    this.tds.addUser(this.signUpObj.email, this.signUpObj.name);
+    const result = this.tds.addUser(
+      this.signUpObj.email,
+      this.signUpObj.name,
+      this.signUpObj.password
+    );
+
+    if (!result) return;
 
     this.formSubmitted.emit();
 
     this.signUpObj = {
       name: '',
       email: '',
+      password: '',
       acceptedTerms: false,
     };
   }

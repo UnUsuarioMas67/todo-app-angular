@@ -4,14 +4,20 @@
     <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit()">
       <div class="form-floating mb-4">
         <input type="text" name="name" class="form-control" placeholder="" required [(ngModel)]="signUpObj.name"
-          #name="ngModel">
+          #nameModel="ngModel">
         <label for="name" class="form-label">Nombre Completo</label>
       </div>
 
       <div class="form-floating mb-4">
         <input type="email" name="email" class="form-control" placeholder="" required email
-          [(ngModel)]="signUpObj.email" #email="ngModel">
+          [(ngModel)]="signUpObj.email" #emailModel="ngModel">
         <label for="email" class="form-label">Email</label>
+      </div>
+
+      <div class="form-floating mb-4">
+        <input type="password" name="password" class="form-control" placeholder="" required
+          [(ngModel)]="signUpObj.password" #passwordModel="ngModel">
+        <label for="password" class="form-label">Contraseña</label>
       </div>
 
       <div class="form-check mt-4 mb-4">
