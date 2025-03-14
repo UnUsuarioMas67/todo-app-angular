@@ -131,4 +131,13 @@ export class TodoDataService {
 
     this.saveUserList();
   }
+
+  deleteTask(taskId: number) {
+    const user = this.getCurrentUser();
+    if (!user) return;
+
+    user.tasks = user.tasks.filter((t) => t.id !== taskId);
+
+    this.saveUserList();
+  }
 }
