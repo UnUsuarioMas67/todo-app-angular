@@ -19,5 +19,12 @@ export class NewTaskFormComponent {
 
   OnSubmit() {
     this.formSubmitted.emit(this.formResult);
+
+    this.formResult = {
+      title: '',
+      description: '',
+      date: '',
+      time: '',
+    };
   }
 }
