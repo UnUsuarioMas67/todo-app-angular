@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row g-4">
       <div class="col-4">
-        <app-new-task-form (formSubmitted)="OnFormSubmit($event)" />
+        <app-new-task-form (formSubmitted)="onFormSubmit($event)" />
       </div>
 
       <div class="col-8">
@@ -27,7 +27,7 @@
 
         <div>
           @for (task of tasks(); track task.id) {
-          <app-todo-task [task]="task"></app-todo-task>
+          <app-todo-task [task]="task" (checkClicked)="onTaskCheckClicked($event)"></app-todo-task>
           }
         </div>
       </div>
