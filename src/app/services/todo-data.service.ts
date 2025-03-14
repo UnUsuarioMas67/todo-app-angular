@@ -81,8 +81,8 @@ export class TodoDataService {
     return true;
   }
 
-  setCurrentUser(user: User | number) {
-    if (typeof user === 'number') {
+  setCurrentUser(user: User | string) {
+    if (typeof user === 'string') {
       localStorage.setItem(this.currentUserKey, JSON.stringify(user));
       return;
     }
