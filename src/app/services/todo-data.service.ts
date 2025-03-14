@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task, User } from '../model/todo-data.type';
+import { AddTaskData, Task, User } from '../model/todo-data.type';
 
 @Injectable({
   providedIn: 'root',
@@ -96,5 +96,27 @@ export class TodoDataService {
 
     const userEmail: string = JSON.parse(json);
     return this.users.find((u) => u.email === userEmail) || null;
+  }
+
+  addTask(data: AddTaskData) {
+    const user = this.getCurrentUser();
+    if (!user) return;
+
+    const lastId = user.tasks.length
+      ? user.tasks.reduce((prev, current) =>
+          current.id > prev.id ? current : prev
+        ).id
+      : 0;
+
+    const task: Task = {
+      id: lastId + 1,
+      title: data.title,
+      description: data.description,
+      dueDate: new Date(`${data.date} ${data.time}`),
+      completed: false,
+    };
+
+    user.tasks.push(task);
+    this.saveUserList();
   }
 }
