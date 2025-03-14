@@ -4,7 +4,7 @@
 
     <form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && onSubmit()">
       <div class="form-floating mb-4">
-        <input #emailInput type="email" name="login-email" class="form-control" placeholder=""
+        <input #emailInput type="email" id="login-email" name="login-email" class="form-control" placeholder=""
           [(ngModel)]="loginObj.email" email required aria-describedby="invalid-email-msg">
         <label for="login-email" class="form-label">
           Correo Electrónico
@@ -14,8 +14,9 @@
       </div>
 
       <div class="form-floating mb-4">
-        <input #passwordInput type="password" name="login-password" class="form-control" placeholder=""
-          [(ngModel)]="loginObj.password" #passwordModel="ngModel" required aria-describedby="invalid-password-msg">
+        <input #passwordInput type="password" id="login-password" name="login-password" class="form-control"
+          placeholder="" [(ngModel)]="loginObj.password" #passwordModel="ngModel" required
+          aria-describedby="invalid-password-msg">
         <label for="login-password" class="form-label">
           Contraseña
         </label>
