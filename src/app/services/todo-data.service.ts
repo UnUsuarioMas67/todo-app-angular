@@ -119,4 +119,16 @@ export class TodoDataService {
     user.tasks.push(task);
     this.saveUserList();
   }
+
+  updateTask(next: Task) {
+    const user = this.getCurrentUser();
+    if (!user) return;
+
+    user.tasks = user.tasks.map((t) => {
+      if (t.id === next.id) return next;
+      return t;
+    });
+
+    this.saveUserList();
+  }
 }
