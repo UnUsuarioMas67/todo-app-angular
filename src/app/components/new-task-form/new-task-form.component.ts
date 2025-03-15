@@ -1,6 +1,7 @@
-import { Component, output } from '@angular/core';
+import { Component, output, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AddTaskData } from '../../model/todo-data.type';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-new-task-form',
@@ -9,6 +10,7 @@ import { AddTaskData } from '../../model/todo-data.type';
   styleUrl: './new-task-form.component.scss',
 })
 export class NewTaskFormComponent {
+  modal = input.required<NgbActiveModal>();
   formSubmitted = output<AddTaskData>();
   formResult = {
     title: '',
@@ -26,5 +28,7 @@ export class NewTaskFormComponent {
       date: '',
       time: '',
     };
+
+    this.modal().close();
   }
 }

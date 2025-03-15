@@ -1,9 +1,10 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, TemplateRef } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { AddTaskData, Task } from '../../model/todo-data.type';
 import { TodoDataService } from '../../services/todo-data.service';
 import { TodoTaskComponent } from '../../components/todo-task/todo-task.component';
 import { NewTaskFormComponent } from '../../components/new-task-form/new-task-form.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-todo-list',
@@ -13,6 +14,7 @@ import { NewTaskFormComponent } from '../../components/new-task-form/new-task-fo
 })
 export class TodoListComponent implements OnInit {
   tds = inject(TodoDataService);
+  modalService = inject(NgbModal);
   user = this.tds.getCurrentUser();
 
   tasks = signal<Array<Task>>([]);
@@ -23,6 +25,10 @@ export class TodoListComponent implements OnInit {
 
     this.userName.set(this.user.name);
     this.tasks.set(this.user.tasks);
+  }
+
+  openModal(content: TemplateRef<any>) {
+    this.modalService.open(content);
   }
 
   onFormSubmit(data: AddTaskData) {
