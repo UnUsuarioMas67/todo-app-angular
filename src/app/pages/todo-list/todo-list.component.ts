@@ -5,10 +5,16 @@ import { TodoDataService } from '../../services/todo-data.service';
 import { TodoTaskComponent } from '../../components/todo-task/todo-task.component';
 import { NewTaskFormComponent } from '../../components/new-task-form/new-task-form.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-list',
-  imports: [HeaderComponent, TodoTaskComponent, NewTaskFormComponent],
+  imports: [
+    HeaderComponent,
+    TodoTaskComponent,
+    NewTaskFormComponent,
+    FormsModule,
+  ],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.scss',
 })
@@ -19,6 +25,15 @@ export class TodoListComponent implements OnInit {
 
   tasks = signal<Array<Task>>([]);
   userName = signal('');
+
+  statusValues: Array<[status: CompletionStatus, text: string]> = [
+    ['all', 'Todas'],
+    ['pending', 'Pendientes'],
+    ['completed', 'Completadas'],
+  ];
+
+  searchFilter = signal('');
+  statusFilter = signal<CompletionStatus>('all');
 
   ngOnInit(): void {
     if (!this.user) return;
@@ -45,4 +60,22 @@ export class TodoListComponent implements OnInit {
     this.tds.deleteTask(task.id);
     this.tasks.set(this.user!.tasks);
   }
+
+  matchesSearch(task: Task, search: string) {
+    if (!search) return true;
+    return task.title.toLowerCase().includes(search.toLowerCase());
+  }
+
+  matchesStatus(task: Task, status: CompletionStatus) {
+    switch (status) {
+      case 'all':
+        return true;
+      case 'pending':
+        return !task.completed;
+      case 'completed':
+        return task.completed;
+    }
+  }
 }
+
+type CompletionStatus = 'all' | 'pending' | 'completed';

@@ -19,14 +19,15 @@
         <form>
           <div class="row g-3 justify-content-between">
             <div class="col-12 col-sm-7">
-              <input type="text" name="search-filter" class="form-control" placeholder="Buscar tarea...">
+              <input type="text" name="search-filter" class="form-control" placeholder="Buscar tarea..."
+                [(ngModel)]="searchFilter">
             </div>
 
             <div class="col-sm-5 col-md-4 col-lg-3">
-              <select class="form-select" name="completion-filter">
-                <option value="all">Todas</option>
-                <option value="pending">Pendientes</option>
-                <option value="completed">Realizadas</option>
+              <select class="form-select" name="completion-filter" [(ngModel)]="statusFilter">
+                @for (item of statusValues; track item[0]) {
+                <option [value]="item[0]">{{item[1]}}</option>
+                }
               </select>
             </div>
           </div>
@@ -36,8 +37,10 @@
 
         <div>
           @for (task of tasks(); track task.id) {
+          @if(matchesSearch(task, searchFilter()) && matchesStatus(task, statusFilter())) {
           <app-todo-task [task]="task" (checkClicked)="onTaskCheckClick($event)"
             (deleteClicked)="onTaskDeleteClick($event)"></app-todo-task>
+          }
           }
         </div>
       </div>
