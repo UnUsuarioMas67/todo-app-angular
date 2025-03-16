@@ -1,0 +1,7 @@
+.btn-delete {
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
