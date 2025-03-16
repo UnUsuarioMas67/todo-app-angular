@@ -4,6 +4,8 @@
   <app-new-task-form [modal]="modal" (formSubmitted)="onFormSubmit($event)"></app-new-task-form>
 </ng-template>
 
+@if (!invalidSession())
+{
 <section class="px-2 py-4 p-md-5">
   <div class="container">
     <div class="row g-4 justify-content-center">
@@ -49,5 +51,19 @@
     </div>
   </div>
 </section>
+}
+@else {
+<section class="px-2 py-4 p-md-5">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      <p class="text-danger text-center">
+        <span class="fw-bold">Error:</span>
+        Sesión inválida
+      </p>
+      <button class="btn btn-outline-primary w-auto" routerLink="/">Volver a inicio</button>
+    </div>
+  </div>
+</section>
+}
 
 <app-footer></app-footer>

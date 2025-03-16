@@ -7,6 +7,7 @@ import { NewTaskFormComponent } from '../../components/new-task-form/new-task-fo
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../../components/footer/footer.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -16,6 +17,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
     NewTaskFormComponent,
     FooterComponent,
     FormsModule,
+    RouterLink,
   ],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.scss',
@@ -26,6 +28,7 @@ export class TodoListComponent implements OnInit {
   user = this.tds.getCurrentUser();
 
   tasks = signal<Array<Task>>([]);
+  invalidSession = signal(false);
 
   statusValues: Array<[status: CompletionStatus, text: string]> = [
     ['all', 'Todas'],
@@ -37,7 +40,10 @@ export class TodoListComponent implements OnInit {
   statusFilter = signal<CompletionStatus>('all');
 
   ngOnInit(): void {
-    if (!this.user) return;
+    if (!this.user) {
+      this.invalidSession.set(true);
+      return;
+    }
 
     this.tasks.set(this.user.tasks);
   }
