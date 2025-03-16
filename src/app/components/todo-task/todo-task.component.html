@@ -1,4 +1,4 @@
-<article class="card mb-3" [ngClass]="task().completed ? 'bg-success-subtle border-success' : ''">
+<article class="card" [ngClass]="task().completed ? 'bg-success-subtle border-success' : ''">
   <div class="card-body">
     <div class="d-flex align-items-center gap-2">
       <input type="checkbox" class="form-check-input my-auto" [checked]="task().completed"

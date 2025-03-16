@@ -35,11 +35,13 @@
 
         <hr class="my-4">
 
-        <div>
+        <div class="row g-3">
           @for (task of tasks(); track task.id) {
           @if(matchesSearch(task, searchFilter()) && matchesStatus(task, statusFilter())) {
-          <app-todo-task [task]="task" (checkClicked)="onTaskCheckClick($event)"
-            (deleteClicked)="onTaskDeleteClick($event)"></app-todo-task>
+          <div class="col-12">
+            <app-todo-task [task]="task" (checkClicked)="onTaskCheckClick($event)"
+              (deleteClicked)="onTaskDeleteClick($event)"></app-todo-task>
+          </div>
           }
           }
         </div>
