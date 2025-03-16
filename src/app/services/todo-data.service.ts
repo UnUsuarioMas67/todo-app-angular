@@ -24,7 +24,7 @@ export class TodoDataService {
     for (let i = 0; i < 10; i++) {
       tasks.push({
         id: i,
-        title: 'Task #' + i,
+        title: 'Tarea #' + i,
         description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id nulla imperdiet, pulvinar mi et, tincidunt nulla.',
         dueDate: new Date('2025-08-13'),
@@ -34,8 +34,8 @@ export class TodoDataService {
 
     const users: Array<User> = [
       {
-        name: 'John Johnson',
-        email: 'jj666@mail.net',
+        name: 'Juan Jiménez',
+        email: 'prueba123@email.com',
         password: '1234',
         tasks,
       },
