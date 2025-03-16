@@ -1,4 +1,4 @@
-import { Component, inject, output } from '@angular/core';
+import { Component, inject, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TodoDataService } from '../../services/todo-data.service';
 
@@ -13,6 +13,8 @@ export class RegisterFormComponent {
   formSubmitted = output();
   tds = inject(TodoDataService);
 
+  emailAlreadyExists = signal(false);
+
   signUpObj = {
     name: '',
     email: '',
@@ -25,6 +27,10 @@ export class RegisterFormComponent {
       this.signUpObj.email,
       this.signUpObj.name,
       this.signUpObj.password
+    );
+
+    this.emailAlreadyExists.set(
+      !!this.tds.getUserByEmail(this.signUpObj.email)
     );
 
     if (!result) return;

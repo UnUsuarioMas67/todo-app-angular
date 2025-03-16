@@ -10,8 +10,12 @@
 
       <div class="form-floating mb-4">
         <input type="email" id="email" name="email" class="form-control" placeholder="" required email
-          [(ngModel)]="signUpObj.email" #emailModel="ngModel">
+          [(ngModel)]="signUpObj.email" #emailModel="ngModel" aria-describedby="existing-email-msg">
         <label for="email" class="form-label">Email</label>
+
+        <small [hidden]="!emailAlreadyExists()" class="text-danger" id="existing-email-msg">
+          Ya existe una cuenta registrada con este email
+        </small>
       </div>
 
       <div class="form-floating mb-4">
