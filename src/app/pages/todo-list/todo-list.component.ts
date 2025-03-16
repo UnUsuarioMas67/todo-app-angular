@@ -24,7 +24,6 @@ export class TodoListComponent implements OnInit {
   user = this.tds.getCurrentUser();
 
   tasks = signal<Array<Task>>([]);
-  userName = signal('');
 
   statusValues: Array<[status: CompletionStatus, text: string]> = [
     ['all', 'Todas'],
@@ -38,7 +37,6 @@ export class TodoListComponent implements OnInit {
   ngOnInit(): void {
     if (!this.user) return;
 
-    this.userName.set(this.user.name);
     this.tasks.set(this.user.tasks);
   }
 

@@ -1,4 +1,4 @@
-<app-header [userName]="userName()" class="fixed-top"></app-header>
+<app-header class="fixed-top"></app-header>
 
 <ng-template #newTask let-modal>
   <app-new-task-form [modal]="modal" (formSubmitted)="onFormSubmit($event)"></app-new-task-form>
