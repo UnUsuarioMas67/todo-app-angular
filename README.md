@@ -18,4 +18,4 @@ Todo List project made using Angular 19 and Bootstrap. The app consist of three 
 ## Links
 
 Github repo: https://github.com/UnUsuarioMas67/todo-app-angular \
-Live Netlify site: https://sweet-boba-31a6a3.netlify.app/todo
+Live Netlify site: https://sweet-boba-31a6a3.netlify.app
