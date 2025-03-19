@@ -42,7 +42,7 @@
           @if(matchesSearch(task, searchFilter()) && matchesStatus(task, statusFilter())) {
           <div class="col-12">
             <app-todo-task [task]="task" (checkClicked)="onTaskCheckClick($event)"
-              (deleteClicked)="onTaskDeleteClick($event)"></app-todo-task>
+              (deleteClicked)="onTaskDeleteClick($event)" (editConfirmed)="onTaskEditConfirm($event)"></app-todo-task>
           </div>
           }
           }
