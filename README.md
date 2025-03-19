@@ -10,7 +10,7 @@ Todo List project made using Angular 19 and Bootstrap. The app consist of three 
 
 ## Features
 
-- Create new tasks, each of which has a title, a description and a due date.
+- Create and edit tasks, each of which has a title, a description and a due date.
 - Mark tasks as completed.
 - Filter tasks by title or completion status.
 - Create your own account which is saved in Local Storage.
