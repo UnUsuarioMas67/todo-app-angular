@@ -11,8 +11,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class TodoTaskComponent implements OnInit {
   task = input.required<Task>();
+
   checkClicked = output<Task>();
   deleteClicked = output<Task>();
+  editConfirmed = output<Task>();
 
   editing = signal<boolean>(false);
   editObj = {
@@ -37,6 +39,16 @@ export class TodoTaskComponent implements OnInit {
 
   onEditClick() {
     this.editing.set(true);
+  }
+
+  onConfirmClick() {
+    this.editing.set(false);
+    this.editConfirmed.emit({
+      ...this.task(),
+      title: this.editObj.title,
+      description: this.editObj.description,
+      dueDate: new Date(`${this.editObj.date} ${this.editObj.time}`),
+    });
   }
 
   onCancelClick() {

@@ -67,6 +67,11 @@ export class TodoListComponent implements OnInit {
     this.tasks.set(this.user!.tasks);
   }
 
+  onTaskEditConfirm(task: Task) {
+    this.tds.updateTask(task);
+    this.tasks.set(this.user!.tasks);
+  }
+
   matchesSearch(task: Task, search: string) {
     if (!search) return true;
     return task.title.toLowerCase().includes(search.toLowerCase());
