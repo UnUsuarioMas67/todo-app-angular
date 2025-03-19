@@ -11,7 +11,7 @@
 
     <div class="ms-4">
       <p class="my-2">{{task().description}}</p>
-      <small class="text-body-tertiary">
+      <small [ngClass]="expired ? 'text-danger' : 'text-body-tertiary'">
         <i class="bi bi-clock"></i>
         {{task().dueDate | date: 'M/d/yy, h:mm a'}}
       </small>
