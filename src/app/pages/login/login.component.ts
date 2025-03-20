@@ -1,5 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { TodoDataService } from '../../services/todo-data.service';
 
 @Component({
@@ -9,6 +9,5 @@ import { TodoDataService } from '../../services/todo-data.service';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  router = inject(Router);
   tds = inject(TodoDataService);
 }

@@ -2,7 +2,7 @@ import { Component, inject, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../model/todo-data.type';
 import { TodoDataService } from '../../services/todo-data.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -12,8 +12,7 @@ import { RouterLink } from '@angular/router';
 })
 export class LoginFormComponent {
   tds = inject(TodoDataService);
-  registerLinkClicked = output();
-  formSubmitted = output();
+  router = inject(Router);
 
   loginObj = {
     email: '',
@@ -35,6 +34,6 @@ export class LoginFormComponent {
     }
 
     this.tds.setCurrentUser(user);
-    this.formSubmitted.emit();
+    this.router.navigateByUrl('/todo');
   }
 }
