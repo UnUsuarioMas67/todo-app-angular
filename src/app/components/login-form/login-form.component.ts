@@ -2,10 +2,11 @@ import { Component, inject, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../model/todo-data.type';
 import { TodoDataService } from '../../services/todo-data.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss',
 })

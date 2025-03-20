@@ -1,10 +1,11 @@
 import { Component, inject, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TodoDataService } from '../../services/todo-data.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.scss',
 })

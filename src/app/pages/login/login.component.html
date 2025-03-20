@@ -16,13 +16,7 @@
         </div>
       </div>
       <div class="col-12 col-lg-6 col-xl-4">
-        @if (!isRegistering()) {
-        <app-login-form (registerLinkClicked)="isRegistering.set(true)" (formSubmitted)="OnLogin()"></app-login-form>
-        }
-        @else {
-        <app-register-form (loginLinkClicked)="isRegistering.set(false)"
-          (formSubmitted)="OnRegister()"></app-register-form>
-        }
+        <router-outlet />
       </div>
     </div>
   </div>
