@@ -68,17 +68,19 @@ export class TodoDataService {
   }
 
   addUser(email: string, name: string, password: string) {
-    if (this.getUserByEmail(email)) return false;
+    if (this.getUserByEmail(email)) return null;
 
-    this.users.push({
+    const user = {
       email,
       name,
       password,
       tasks: [],
-    });
+    };
+
+    this.users.push(user);
 
     this.saveUserList();
-    return true;
+    return user;
   }
 
   setCurrentUser(user: User | string) {
