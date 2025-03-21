@@ -1,7 +1,7 @@
-import { Component, inject, output, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TodoDataService } from '../../services/todo-data.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -10,9 +10,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './register-form.component.scss',
 })
 export class RegisterFormComponent {
-  loginLinkClicked = output();
-  formSubmitted = output();
   tds = inject(TodoDataService);
+  router = inject(Router);
 
   emailAlreadyExists = signal(false);
 
@@ -24,19 +23,17 @@ export class RegisterFormComponent {
   };
 
   onSubmit() {
+    this.emailAlreadyExists.set(
+      !!this.tds.getUserByEmail(this.signUpObj.email)
+    );
+
     const result = this.tds.addUser(
       this.signUpObj.email,
       this.signUpObj.name,
       this.signUpObj.password
     );
 
-    this.emailAlreadyExists.set(
-      !!this.tds.getUserByEmail(this.signUpObj.email)
-    );
-
     if (!result) return;
-
-    this.formSubmitted.emit();
 
     this.signUpObj = {
       name: '',
@@ -44,5 +41,8 @@ export class RegisterFormComponent {
       password: '',
       acceptedTerms: false,
     };
+
+    this.tds.setCurrentUser(result);
+    this.router.navigateByUrl('/todo');
   }
 }
