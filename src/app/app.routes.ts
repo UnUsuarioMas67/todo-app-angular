@@ -8,6 +8,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 export const routes: Routes = [
   {
     path: 'home',
+    title: 'TaskFlow',
     component: AboutComponent,
   },
   {
@@ -16,10 +17,12 @@ export const routes: Routes = [
     children: [
       {
         path: 'sign-in',
+        title: 'Inicia Sesión - TaskFlow',
         component: LoginFormComponent,
       },
       {
         path: 'sign-up',
+        title: 'Crea tu cuenta - TaskFlow',
         component: RegisterFormComponent,
       },
       {
@@ -31,6 +34,7 @@ export const routes: Routes = [
   },
   {
     path: 'todo',
+    title: 'Tus Tareas - TaskFlow',
     component: TodoListComponent,
   },
   {
