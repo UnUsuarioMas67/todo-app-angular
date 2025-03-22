@@ -8,11 +8,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { RouterLink } from '@angular/router';
+import { TodoListHeaderComponent } from '../../components/todo-list-header/todo-list-header.component';
 
 @Component({
   selector: 'app-todo-list',
   imports: [
-    HeaderComponent,
+    TodoListHeaderComponent,
     TodoTaskComponent,
     NewTaskFormComponent,
     FooterComponent,

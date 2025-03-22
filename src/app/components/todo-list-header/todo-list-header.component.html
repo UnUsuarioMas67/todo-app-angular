@@ -1,0 +1,20 @@
+<header class="navbar py-3 bg-body-tertiary border-bottom">
+  <nav class="container">
+    <a class="navbar-brand text-uppercase fw-bolder text-primary" routerLink="/">
+      <i class="bi bi-ui-checks-grid"></i>
+      TaskFlow
+    </a>
+
+    <div ngbDropdown class="d-inline-block">
+      <button type="button" class="btn btn-link d-inline-flex align-items-center text-decoration-none" id="dropdown"
+        ngbDropdownToggle>
+        <span class="me-1">{{userName()}}</span>
+        <i class="bi bi-person-circle fs-5"></i>
+      </button>
+
+      <div class="dropdown-menu-end" ngbDropdownMenu aria-labelledby="dropdown">
+        <button class="dropdown-item text-danger" routerLink="/login"><i class="bi bi-power me-2"></i>Salir</button>
+      </div>
+    </div>
+  </nav>
+</header>
