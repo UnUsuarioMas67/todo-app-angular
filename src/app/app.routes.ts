@@ -7,19 +7,13 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 
 export const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'login',
+    path: 'home',
+    component: AboutComponent,
   },
   {
     path: 'login',
     component: LoginComponent,
     children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'sign-in',
-      },
       {
         path: 'sign-in',
         component: LoginFormComponent,
@@ -28,6 +22,11 @@ export const routes: Routes = [
         path: 'sign-up',
         component: RegisterFormComponent,
       },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'sign-in',
+      },
     ],
   },
   {
@@ -35,7 +34,8 @@ export const routes: Routes = [
     component: TodoListComponent,
   },
   {
-    path: 'about',
-    component: AboutComponent,
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home',
   },
 ];
